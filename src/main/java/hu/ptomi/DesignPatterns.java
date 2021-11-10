@@ -2,6 +2,20 @@ package hu.ptomi;
 
 public class DesignPatterns {
 
+    public static void main(String[] args) {
+
+    }
+
+    // Intrinsic state classes.
+    interface IntrinsicStrategy {
+        void execute();
+    }
+
+    // Extrinsic state classes.
+    interface ExtrinsicStrategy {
+        void execute(Context ctx);
+    }
+
     /**
      * An object memory needs.
      * 64 bit machine with compressedOops (pointers are in a format like in a 32 bit machine, 4 bytes).
@@ -21,11 +35,6 @@ public class DesignPatterns {
         }
     }
 
-    // Intrinsic state classes.
-    interface IntrinsicStrategy {
-        void execute();
-    }
-
     private class IntrinsicStrategyImpl implements IntrinsicStrategy {  // object header    =   12 bytes
         private final Context ctx;                                      // object ref       =   4 bytes (16 bytes sum with rounding)
 
@@ -41,11 +50,6 @@ public class DesignPatterns {
         }
     }
 
-    // Extrinsic state classes.
-    interface ExtrinsicStrategy {
-        void execute(Context ctx);
-    }
-
     private class ExtrinsicStrategyImpl implements ExtrinsicStrategy {  // object header    =   12 bytes (16 bytes sum with rounding)
 
         // less memory, and can be shared between multiple context, but worse encapsulation
@@ -56,9 +60,5 @@ public class DesignPatterns {
         public void execute(Context ctx) {
             System.out.println("Executed: " + ctx.getState());
         }
-    }
-
-    public static void main(String[] args) {
-
     }
 }

@@ -6,8 +6,29 @@ import java.util.concurrent.*;
  * Builder Pattern = Avoid telescoping constructors caused by defaults and named parameters.
  * <p>
  * Uee Case: assemble complex object from parts, e.g.: buildXYZ then a director to build the complex whole product
+ * JDK use case: Calendar Builder
  */
 public class BuilderPattern {
+
+    public static void main(String[] args) {
+        var director = new ThreadPoolDirector(new FixedThreadPoolBuilder(5));
+        director.construct();
+
+        var otherDirector = new ThreadPoolDirector(new CachedThreadPoolBuilder());
+        otherDirector.construct();
+
+        var server = new Server.Builder()
+                .port(443)
+                .host("www.google.hu")
+                .build();
+        System.out.println(server);
+
+        var thirdDirector = new ReworkedThreadPoolDirector.Builder()
+                .size(10)
+                .queue(new SynchronousQueue<>())
+                .build();
+        System.out.println(thirdDirector.construct());
+    }
 
     // ===== classic builder pattern, little bit over designed =====
     private interface ThreadPoolBuilder {
@@ -168,26 +189,6 @@ public class BuilderPattern {
                 );
             }
         }
-    }
-
-    public static void main(String[] args) {
-        var director = new ThreadPoolDirector(new FixedThreadPoolBuilder(5));
-        director.construct();
-
-        var otherDirector = new ThreadPoolDirector(new CachedThreadPoolBuilder());
-        otherDirector.construct();
-
-        var server = new Server.Builder()
-                .port(443)
-                .host("www.google.hu")
-                .build();
-        System.out.println(server);
-
-        var thirdDirector = new ReworkedThreadPoolDirector.Builder()
-                .size(10)
-                .queue(new SynchronousQueue<>())
-                .build();
-        System.out.println(thirdDirector.construct());
     }
 }
 
