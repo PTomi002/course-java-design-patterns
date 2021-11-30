@@ -5,7 +5,7 @@ import java.util.concurrent.*;
 /**
  * Builder Pattern = Avoid telescoping constructors caused by defaults and named parameters.
  * <p>
- * Uee Case: assemble complex object from parts, e.g.: buildXYZ then a director to build the complex whole product
+ * Use Case: assemble complex object from parts, e.g.: buildXYZ then a director to build the complex whole product
  * JDK use case: Calendar Builder
  */
 public class BuilderPattern {

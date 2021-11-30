@@ -22,17 +22,12 @@ public class Employee {
             case TESTER -> {
                 position = Position.PROGRAMMER;
                 salary *= 2;
-                break;
             }
             case PROGRAMMER -> {
                 position = Position.MANAGER;
                 salary *= 4;
-                break;
             }
-            case MANAGER -> {
-                salary *= 2;
-                break;
-            }
+            case MANAGER -> salary *= 2;
         }
     }
 
@@ -45,9 +40,9 @@ public class Employee {
         var m = (MementoImpl) memento;
 
         if (this == m.employeeRef.get()) {
-            salary = m.getSalary();
-            balance = m.getBalance();
-            position = m.getPosition();
+            salary = m.salary;
+            balance = m.balance;
+            position = m.position;
         }
     }
 
@@ -91,18 +86,6 @@ public class Employee {
             balance = employee.balance;
             position = employee.position;
             employeeRef = new WeakReference<>(employee);
-        }
-
-        public int getSalary() {
-            return salary;
-        }
-
-        public int getBalance() {
-            return balance;
-        }
-
-        public Position getPosition() {
-            return position;
         }
     }
 }
