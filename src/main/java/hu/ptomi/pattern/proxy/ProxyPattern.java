@@ -1,8 +1,5 @@
 package hu.ptomi.pattern.proxy;
 
-import sun.reflect.ReflectionFactory;
-
-import java.lang.reflect.Proxy;
 import java.util.Objects;
 
 import static java.util.Objects.requireNonNull;

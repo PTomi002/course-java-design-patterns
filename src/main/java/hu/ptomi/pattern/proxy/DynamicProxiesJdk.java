@@ -4,7 +4,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-public class DynamicProxies {
+public class DynamicProxiesJdk {
 
     interface Animal {
     }
@@ -21,7 +21,7 @@ public class DynamicProxies {
         }
     }
 
-    // proxy class
+    // proxy handler
     private record DogInvocationHandler(Dog real) implements InvocationHandler {
         // called whenever any method is called on the interface array
         @Override
@@ -41,6 +41,8 @@ public class DynamicProxies {
                 new Class[]{Dog.class},      // proxy implements these interfaces
                 new DogInvocationHandler(new BullDog())
         );
+
+        // check generated proxy class
         System.out.println(proxy.getClass().toString());
         System.out.println(proxy.bark());
     }
