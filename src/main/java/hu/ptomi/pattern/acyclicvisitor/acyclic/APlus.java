@@ -1,5 +1,7 @@
 package hu.ptomi.pattern.acyclicvisitor.acyclic;
 
+// Can write an annotation processing tool to check interfaces
+// Like e.g.: @AcyclicVisitor(base=Visitor)
 public record APlus(AExpression first, AExpression second) implements AExpression {
     @Override
     public void accept(AVisitor aVisitor) {

@@ -11,7 +11,7 @@ public class NumberCountingVisitor implements Visitor {
     }
 
     @Override
-    public void visit(Plus plus) { // Why do we need this? if it is empty
+    public void visit(Plus plus) { // Why do we need this? if it is empty, extending with new visitors makes empty method skeletons.
 
     }
 
