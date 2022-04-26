@@ -8,7 +8,7 @@ import static java.util.Objects.requireNonNull;
  * Proxy Pattern = Clients speak to the real object via a substitute.
  * <p>
  * Use Case:
- * JDK use case: JavaBeans, MBeans, Collections.xyzList
+ * JDK use case: JavaBeans, MBeans, Collections.xyzList (Collections.unmodifiableList is a protection proxy)
  */
 public class ProxyPattern {
     // Other example chain of proxies.
