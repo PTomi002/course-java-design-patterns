@@ -1,11 +1,13 @@
 package hu.ptomi.pattern.flyweight;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.function.Consumer;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
 
+@Disabled
 public class FlyWeightPatternTest {
     @Test
     public void testSameness() {

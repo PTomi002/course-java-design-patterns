@@ -1,5 +1,8 @@
 package hu.ptomi;
 
+/**
+ * We use patterns because of code reusage!.
+ */
 public class DesignPatterns {
 
     public static void main(String[] args) {
